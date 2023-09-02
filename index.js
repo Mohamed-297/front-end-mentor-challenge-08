@@ -26,11 +26,12 @@ updateMarker=(update_marker=[30.222,30.222])=>{
 }
 
 getIPDetails =(default_ip)=>{
+    
     if(default_ip==undefined){
-        var ip_url="https://geo.ipify.org/api/v2/country,city?apiKey=at_baOUBtJ6MnTXAfo2KCnI42wSrq8b7&"
+    var ip_url="https://geo.ipify.org/api/v2/country,city?apiKey=at_baOUBtJ6MnTXAfo2KCnI42wSrq8b7&ipAddress=192.212.174.101"
     }
     else{
-            ip_url=`https://geo.ipify.org/api/v2/country,city?apiKey=at_baOUBtJ6MnTXAfo2KCnI42wSrq8b7&ipAddress=${enteredIp.value}`   
+        ip_url=`https://geo.ipify.org/api/v2/country,city?apiKey=at_baOUBtJ6MnTXAfo2KCnI42wSrq8b7&ipAddress=${default_ip}`   
     }
     fetch(ip_url)
     .then(res=>res.json())
@@ -54,6 +55,37 @@ getIPDetails =(default_ip)=>{
     updateMarker(update_marker =[res.location.lat,res.location.lng])
 })
     .catch(error=>alert("Oops! something went wrong."))
+    
+}
+getPersonalIP =()=>{
+    
+    
+    var ip_personal_url="https://geo.ipify.org/api/v2/country,city?apiKey=at_baOUBtJ6MnTXAfo2KCnI42wSrq8b7&"
+    
+
+    fetch(ip_personal_url)
+    .then(res=>res.json())
+    .then(res=>{
+    ipContainer.innerHTML=""
+    locationContainer.innerHTML=""
+    timeContainer.innerHTML=""
+    ispContainer.innerHTML=""
+    ip=document.createTextNode(res.ip)
+    ipContainer.appendChild(ip)
+    
+
+    loc=document.createTextNode(`${res.location.country}, ${res.location.region}`)
+    locationContainer.appendChild(loc)
+
+    time=document.createTextNode(`UTC ${res.location.timezone}`)
+    timeContainer.appendChild(time)
+
+    isp=document.createTextNode(res.isp)
+    ispContainer.appendChild(isp)
+    updateMarker(update_marker =[res.location.lat,res.location.lng])
+})
+    .catch(error=>alert("Oops! something went wrong."))
+    
 }
 
 getIPDetails()
@@ -61,8 +93,14 @@ getIPDetails()
 document.addEventListener("load",updateMarker())
 btn.addEventListener("click",e=>{
     e.preventDefault()
+    
     if(enteredIp.value!=""&&enteredIp.value!=null){
         getIPDetails(enteredIp.value)
+        return;
+    }
+    if(enteredIp.value==""||enteredIp.value==null){
+    
+        getPersonalIP()
         return;
     }
     alert("please enter valid IP Address")
