@@ -23,7 +23,7 @@ padding-bottom: 32px;
     justify-content: center;
     width: 55%;
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
     .inp{
         width: 80%;
     }
@@ -43,7 +43,7 @@ outline: none;
 padding-left: 20px;
 
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
     input{
         width: 90%;
         font-size: 11px;
@@ -60,7 +60,7 @@ padding-left: 20px;
     text-align: center;
     font-weight: 700;
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
     .btn{
         width: 15%;
     }
@@ -78,7 +78,7 @@ padding-left: 20px;
     border-radius: 15px;
     align-items: center;
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
     .container{
         align-items: center;
         flex-direction: column;
@@ -97,7 +97,7 @@ padding-left: 20px;
     top: -30px;
     left: -50px;
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
     .container div{
         position:initial;
         align-items: center;
@@ -117,7 +117,7 @@ p{
     background-color: #ebebeb;
     right: -120px;
 }
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
     .container div:not(:last-child):after{
         display: none;
     }
@@ -130,7 +130,7 @@ span{
     position: relative;
     top: 20px;
 } 
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
 span{
     top: 0px;
     padding-top: 5px;
